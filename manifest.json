@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Personal Addon",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Personal Firefox Extension",
   "homepage_url": "https://github.com/nikolockenvitz/personal-addon",
   "author": "Niko Lockenvitz",

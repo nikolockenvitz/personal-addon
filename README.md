@@ -3,8 +3,8 @@
 <a href="https://nikolockenvitz.github.io/personal-addon/">
 <img src="https://nikolockenvitz.github.io/personal-addon/icons/personal-addon-48.png" height="20px" /></a>
 <!-- SHIELD IO BADGES INSTALL START -->
-<a href="https://nikolockenvitz.github.io/personal-addon/xpi/personal_addon-0.0.12-fx.xpi">
-<img src="https://img.shields.io/badge/firefox-v0.0.12-FF7139?logo=firefox-browser" alt="Install for Firefox" /></a>
+<a href="https://nikolockenvitz.github.io/personal-addon/xpi/personal_addon-0.0.13-fx.xpi">
+<img src="https://img.shields.io/badge/firefox-v0.0.13-FF7139?logo=firefox-browser" alt="Install for Firefox" /></a>
 <!-- SHIELD IO BADGES INSTALL END -->
 
 Personal addon to test some browser extension stuff easily.

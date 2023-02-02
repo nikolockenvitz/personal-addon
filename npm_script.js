@@ -7,6 +7,7 @@ const ZIP_CONTENT = {
         "background_scripts",
         "content_scripts",
         "icons",
+        "pages",
         "popup",
         "utils",
     ],
