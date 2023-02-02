@@ -1,0 +1,62 @@
+{
+  "manifest_version": 2,
+  "name": "Personal Addon",
+  "version": "0.0.12",
+  "description": "Personal Firefox Extension",
+  "homepage_url": "https://github.com/nikolockenvitz/personal-addon",
+  "author": "Niko Lockenvitz",
+  "icons": {
+    "48": "icons/personal-addon-48.png",
+    "96": "icons/personal-addon-96.png",
+    "128": "icons/personal-addon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "*://music.youtube.com/*"],
+      "js": [
+        "utils/browser-setup.js",
+        "utils/dom-helper.js",
+        "content_scripts/yt-music-musicapp.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [ "https://nikolockenvitz.de/*"],
+      "js": [
+        "content_scripts/test.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "clipboardWrite",
+    "clipboardRead",
+    "http://localhost:3000/*"
+  ],
+  "optional_permissions": [
+    "https://nikolockenvitz.de/*",
+    "https://github.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "utils/browser-setup.js",
+      "background_scripts/on-install-and-update.js",
+      "background_scripts/fetch.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": "icons/personal-addon-48.png",
+    "default_title": "Personal Addon",
+    "default_popup": "popup/popup.html"
+  },
+  "options_ui": {
+    "page": "pages/options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "update_url": "https://nikolockenvitz.github.io/personal-addon/updates.json"
+    }
+  }
+}

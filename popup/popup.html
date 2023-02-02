@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="./popup.css">
+        <script src="../utils/browser-setup.js" type="text/javascript" defer></script>
+        <script src="./popup.js" type="text/javascript" defer></script>
+    </head>
+
+    <body class="noselect">
+        <div id="popup-content">
+            <div class="section">
+                <p class="section-heading" title="todo">Test</p>
+                <div class="section-text">
+                    <p>Hello, World!</p>
+                    <p><label class="switch">
+                        <input type="checkbox" id="hello-world" checked>
+                        <span class="slider round"></span>
+                    </label></p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="section">
+                <p class="section-heading">Tabs</p>
+                <div class="section-text" id="tabs-copy-urls">
+                    <p>Copy Tab URLs</p>
+                    <p style="visibility: hidden;"><label class="switch"> <!-- force same height as other lines -->
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label></p>
+                    <p></p>
+                </div>
+                <div class="section-text" id="open-urls-clipboard">
+                    <p>Open URLs From Clipboard</p>
+                    <p style="visibility: hidden;"><label class="switch"> <!-- force same height as other lines -->
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label></p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="section">
+                <p class="section-heading">More</p>
+                <div class="section-text" id="btn-show-configuration">
+                    <p>Configuration</p>
+                    <p><span class="arrow right"></span></p>
+                    <p></p>
+                </div>
+                <div class="section-text external-link" title="https://github.com/nikolockenvitz/personal-addon">
+                    <p>View on GitHub</p>
+                    <p><span class="open-in-new-tab"><svg viewBox="0 0 10 10" style="margin: 2px 0 -2px 0;">
+                        <polyline points="4,2 2,2 2,8 8,8 8,6" />
+                        <polyline points="6,1 9,1 9,4" />
+                        <polyline points="5,5 9,1" />
+                    </svg></span></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-configuration">
+            <div class="modal-content">
+                <div class="section modal-header">
+                    <span id="btn-hide-configuration"><span class="arrow arrow-white arrow-larger left"></span></span>
+                    <span>Configuration</span>
+                    <span><span class="arrow arrow-white arrow-larger right"></span></span>
+                </div>
+                <div class="section">
+                    <p class="section-heading">Test</p>
+                    <div class="section-text" id="test-get-permissions">
+                        <p>Log Permissions</p>
+                        <p style="visibility: hidden;"><label class="switch"> <!-- force same height as other lines -->
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label></p>
+                        <p></p>
+                    </div>
+                    <div class="section-text" id="test-grant-optional-permissions">
+                        <p>Grant Optional Permissions</p>
+                        <p style="visibility: hidden;"><label class="switch"> <!-- force same height as other lines -->
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label></p>
+                        <p></p>
+                    </div>
+                    <p class="footer-text">
+                        Hello, World!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
