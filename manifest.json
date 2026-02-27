@@ -30,6 +30,7 @@
   ],
   "permissions": [
     "tabs",
+    "menus",
     "clipboardWrite",
     "clipboardRead",
     "http://localhost:3000/*"
@@ -42,7 +43,8 @@
     "scripts": [
       "utils/browser-setup.js",
       "background_scripts/on-install-and-update.js",
-      "background_scripts/fetch.js"
+      "background_scripts/fetch.js",
+      "background_scripts/tab-context-menu.js"
     ]
   },
   "browser_action": {
