@@ -1,9 +1,7 @@
 // Get a meaningful name for a window
 async function getWindowName(tabs) {
     // Look for nikolockenvitz.de/m/?m= tabs
-    const messageTabs = tabs.filter(tab =>
-        tab.url && tab.url.match(/^https?:\/\/nikolockenvitz\.de\/m\/\?.*m=/i)
-    );
+    const messageTabs = tabs.filter((tab) => tab.url && tab.url.startsWith("https://nikolockenvitz.de/m/"));
 
     if (messageTabs.length > 0) {
         // Use the first matching tab's title
@@ -14,20 +12,18 @@ async function getWindowName(tabs) {
 
         // Fallback: extract m parameter from URL
         const url = new URL(messageTab.url);
-        const mParam = url.searchParams.get('m');
+        const mParam = url.searchParams.get("m");
         if (mParam) {
-            return mParam.replace(/-/g, ' ');
+            return mParam.replace(/-/g, " ");
         }
     }
 
     // Fallback: use first tab's title + tab count
     const tabCount = tabs.length;
-    const firstTabTitle = tabs[0]?.title || 'Untitled';
-    const truncatedTitle = firstTabTitle.length > 30
-        ? firstTabTitle.substring(0, 30) + '...'
-        : firstTabTitle;
+    const firstTabTitle = tabs[0]?.title || "Untitled";
+    const truncatedTitle = firstTabTitle.length > 30 ? firstTabTitle.substring(0, 30) + "..." : firstTabTitle;
 
-    return `${truncatedTitle} (${tabCount} tab${tabCount !== 1 ? 's' : ''})`;
+    return `${truncatedTitle} (${tabCount} tab${tabCount !== 1 ? "s" : ""})`;
 }
 
 // Build window submenu items
@@ -38,11 +34,11 @@ async function updateWindowSubmenu(currentWindowId) {
     // Create parent menu with icon
     browser.menus.create({
         id: "move-tab-to-window",
-        title: "Move Tab to Window",
+        title: "Move Tab(s) to Window",
         contexts: ["tab"],
         icons: {
-            "16": "icons/personal-addon-48.png"
-        }
+            16: "icons/personal-addon-48.png",
+        },
     });
 
     // Get all windows and their tabs
@@ -58,7 +54,7 @@ async function updateWindowSubmenu(currentWindowId) {
             parentId: "move-tab-to-window",
             title: windowName,
             contexts: ["tab"],
-            enabled: !isCurrentWindow
+            enabled: !isCurrentWindow,
         });
     }
 
@@ -73,11 +69,11 @@ browser.menus.onClicked.addListener(async (info, tab) => {
         // Get all highlighted (selected) tabs in the current window
         const highlightedTabs = await browser.tabs.query({
             windowId: tab.windowId,
-            highlighted: true
+            highlighted: true,
         });
 
         // Find the active tab among highlighted tabs
-        const activeHighlightedTab = highlightedTabs.find(t => t.active);
+        const activeHighlightedTab = highlightedTabs.find((t) => t.active);
 
         // If we're moving the active tab, activate the nikolockenvitz.de/m tab first
         if (activeHighlightedTab) {
@@ -85,9 +81,11 @@ browser.menus.onClicked.addListener(async (info, tab) => {
             const allSourceTabs = await browser.tabs.query({ windowId: tab.windowId });
 
             // Find the nikolockenvitz.de/m tab that's NOT being moved
-            const messageTab = allSourceTabs.find(t =>
-                !highlightedTabs.some(ht => ht.id === t.id) && // Not in the tabs being moved
-                t.url && t.url.match(/^https?:\/\/nikolockenvitz\.de\/m\/\?.*m=/i)
+            const messageTab = allSourceTabs.find(
+                (t) =>
+                    !highlightedTabs.some((ht) => ht.id === t.id) && // Not in the tabs being moved
+                    t.url &&
+                    t.url.startsWith("https://nikolockenvitz.de/m/"),
             );
 
             // Activate the message tab before moving
@@ -102,7 +100,7 @@ browser.menus.onClicked.addListener(async (info, tab) => {
         for (const highlightedTab of highlightedTabs) {
             const movedTab = await browser.tabs.move(highlightedTab.id, {
                 windowId: targetWindowId,
-                index: -1 // -1 means end of the window
+                index: -1, // -1 means end of the window
             });
 
             // Track the moved tab if it was the active one
