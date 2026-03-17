@@ -1,5 +1,11 @@
 const inputIds = [];
-const buttonInputIds = ["tabs-copy-urls", "open-urls-clipboard", "test-get-permissions", "test-grant-optional-permissions"];
+const buttonInputIds = [
+    "tabs-copy-urls",
+    "open-urls-clipboard",
+    "unload-all-tabs",
+    "test-get-permissions",
+    "test-grant-optional-permissions",
+];
 const configInputIds = [];
 
 let options = {};
@@ -113,8 +119,9 @@ function addOnClickListenerForButton(buttonInputId) {
             copyTabUrls();
         } else if (buttonInputId === "open-urls-clipboard") {
             openURLsFromClipboard();
+        } else if (buttonInputId === "unload-all-tabs") {
+            unloadAllTabs();
         } else if (buttonInputId === "test-get-permissions") {
-            console.log("button pressed :D");
             execAsync(browser.permissions.getAll, [], (r) => {
                 console.log("get all", r);
             });
@@ -209,4 +216,23 @@ async function openURLsFromClipboard() {
         }
     }
     window.close();
+}
+
+async function unloadAllTabs() {
+    // Get all tabs in all windows (except for each window's active tab)
+    const allTabs = await browser.tabs.query({
+        active: false,
+    });
+
+    // Unload each tab
+    await Promise.all(
+        allTabs.map(async (t) => {
+            if (t.url.startsWith("https://nikolockenvitz.de/m/")) return;
+            try {
+                await browser.tabs.discard(t.id);
+            } catch (e) {
+                console.error(`Failed to unload tab ${t.id}:`, e, t);
+            }
+        }),
+    );
 }
