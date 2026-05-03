@@ -3,9 +3,9 @@
     "{aa204546-a8da-4f2b-a1ee-d87e52e3b00d}": {
       "updates": [
         {
-          "version": "0.0.14",
-          "update_link": "https://nikolockenvitz.github.io/personal-addon/xpi/personal_addon-0.0.14.xpi",
-          "update_hash": "sha256:1ab277d5a681b4f9c54d282f7265d86569cb860aeb74b982f848868b54dc7537"
+          "version": "0.0.15",
+          "update_link": "https://nikolockenvitz.github.io/personal-addon/xpi/personal_addon-0.0.15.xpi",
+          "update_hash": "sha256:f7f5f6aa34ce6e38b15b3407c3fc98ba4dbdf8022801b83678978577937ddd60"
         }
       ]
     }

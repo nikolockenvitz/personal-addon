@@ -63,6 +63,10 @@
   },
   "browser_specific_settings": {
     "gecko": {
+      "id": "{aa204546-a8da-4f2b-a1ee-d87e52e3b00d}",
+      "data_collection_permissions": {
+         "required": ["none"]
+      },
       "update_url": "https://nikolockenvitz.github.io/personal-addon/updates.json"
     }
   }
