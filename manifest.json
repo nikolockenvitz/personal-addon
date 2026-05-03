@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Personal Addon",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Personal Firefox Extension",
   "homepage_url": "https://github.com/nikolockenvitz/personal-addon",
   "author": "Niko Lockenvitz",
@@ -33,7 +33,11 @@
     "menus",
     "clipboardWrite",
     "clipboardRead",
-    "http://localhost:3000/*"
+    "http://localhost:3000/*",
+    "webRequest",
+    "webRequestBlocking",
+    "https://tile.openstreetmap.org/*",
+    "file:///*"
   ],
   "optional_permissions": [
     "https://nikolockenvitz.de/*",
@@ -44,7 +48,8 @@
       "utils/browser-setup.js",
       "background_scripts/on-install-and-update.js",
       "background_scripts/fetch.js",
-      "background_scripts/tab-context-menu.js"
+      "background_scripts/tab-context-menu.js",
+      "background_scripts/osm.js"
     ]
   },
   "browser_action": {
